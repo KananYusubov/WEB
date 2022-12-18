@@ -1,0 +1,35 @@
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.fruits-list {
+  counter-reset: _listCount;
+  margin: 10px;
+  padding: 10px 15px;
+  background-color: #ef9eaf;
+}
+
+.fruits-list .fruit::before {
+  counter-increment: _listCount;
+  content: counter(_listCount) ".";
+  text-align: center;
+  margin: 0 5px;
+}
+
+.fruit {
+  background-color: #c66377;
+  list-style: none;
+  color: white;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.fruit ::before {
+  background-color: #c66377;
+}
+
+.fruit-name {
+  color: white;
+  background-color: #9f354b;
+  margin: 0;
+  padding: 5px 10px;
+}

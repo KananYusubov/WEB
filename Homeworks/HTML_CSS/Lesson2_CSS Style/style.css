@@ -1,0 +1,44 @@
+* {
+  font-size: 15px;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+strong {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+code {
+  background-color: #e7e7e7;
+  color: #b05d55;
+}
+
+pre {
+  background-color: #e7e7e7;
+}
+
+dfn {
+  background-color: #e7e7e7;
+  font-style: normal;
+  font-weight: normal;
+  color: #6dafb2;
+}
+
+.dfn_text {
+  font-style: normal;
+  font-weight: normal;
+  color: black;
+}

@@ -1,0 +1,19 @@
+* {
+  color: aliceblue;
+}
+
+body {
+  background-color: black;
+}
+
+p {
+  color: darkgrey;
+}
+
+strong {
+  color: red;
+}
+
+div strong {
+  color: darkgreen;
+}

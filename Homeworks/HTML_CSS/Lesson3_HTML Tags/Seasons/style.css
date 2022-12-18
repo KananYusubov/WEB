@@ -1,0 +1,103 @@
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+html {
+  background: url(./Images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#page-title {
+  text-align: center;
+}
+
+.page-icon {
+  object-fit: none;
+  object-position: center center;
+  margin: 0;
+  width: 120px;
+}
+
+#page-header {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(255, 255, 255) 0px -1px 4px, rgb(255, 255, 0) 0px -2px 10px,
+    rgb(255, 128, 0) 0px -10px 20px, rgb(255, 0, 0) 0px -18px 40px;
+  --darkreader-inline-color: #e8e6e3;
+  --darkreader-inline-bgcolor: #262a2b;
+  --darkreader-inline-bgimage: none;
+}
+
+.season {
+  list-style: none;
+  margin-left: 40%;
+  margin-bottom: 50px;
+}
+
+.season-icon {
+  width: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.season-title {
+  color: rgb(255, 255, 255);
+  font-size: 3rem;
+  text-shadow: rgb(255, 255, 255) 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px,
+    rgb(255, 255, 255) 0px 0px 15px, rgb(73, 255, 24) 0px 0px 20px,
+    rgb(73, 255, 24) 0px 0px 30px, rgb(73, 255, 24) 0px 0px 40px,
+    rgb(73, 255, 24) 0px 0px 55px, rgb(73, 255, 24) 0px 0px 75px;
+  --darkreader-inline-color: #e8e6e3;
+  --darkreader-inline-bgcolor: #1a1d1e;
+  --darkreader-inline-bgimage: n;
+}
+
+.season-header {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  text-align: center;
+}
+
+.month-name {
+  font-style: normal;
+  font-weight: bold;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 2.5rem;
+  padding-bottom: 50px;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(64, 116, 181) 2px 2px 0px, rgb(64, 116, 181) 2px -2px 0px,
+    rgb(64, 116, 181) -2px 2px 0px, rgb(64, 116, 181) -2px -2px 0px,
+    rgb(64, 116, 181) 2px 0px 0px, rgb(64, 116, 181) 0px 2px 0px,
+    rgb(64, 116, 181) -2px 0px 0px, rgb(64, 116, 181) 0px -2px 0px;
+  --darkreader-inline-color: #e8e6e3;
+  --darkreader-inline-bgcolor: #181a1b;
+  --darkreader-inline-bgimage: none;
+}
+
+.month-ref {
+  text-decoration: none;
+}
+
+.month-ref :hover {
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(255, 255, 255) 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px,
+    rgb(255, 255, 255) 0px 0px 15px, rgb(255, 45, 149) 0px 0px 20px,
+    rgb(255, 45, 149) 0px 0px 30px, rgb(255, 45, 149) 0px 0px 40px,
+    rgb(255, 45, 149) 0px 0px 50px, rgb(255, 45, 149) 0px 0px 75px;
+  --darkreader-inline-color: #e8e6e3;
+  --darkreader-inline-bgcolor: #262a2b;
+  --darkreader-inline-bgimage: none;
+}
+
+.month-icon {
+  width: 36px;
+  vertical-align: middle;
+}

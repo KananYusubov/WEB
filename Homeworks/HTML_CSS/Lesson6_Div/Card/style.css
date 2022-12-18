@@ -1,0 +1,84 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@400;600&display=swap");
+* {
+  font-family: "Chivo Mono", monospace;
+}
+
+body {
+  background-color: #021226;
+}
+
+.player {
+  height: 100px;
+  margin-bottom: 60px;
+}
+
+.player-name {
+  color: #f5dfd3;
+  text-align: left;
+}
+
+.info {
+  width: 600px;
+  margin: 10% auto;
+}
+
+.player-cards {
+  width: 750px;
+}
+
+.card {
+  float: left;
+  width: 75px;
+  height: 45px;
+  padding: 0;
+  margin-left: 20px;
+  background-color: #676681;
+  border-radius: 5px;
+}
+
+#double-number {
+  width: 100px;
+}
+
+[class^="card-name"] {
+  color: black;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.card-name-9,
+.card-name-6,
+.card-name-A,
+.card-name-3,
+.card-name-K {
+  color: #d91e2e;
+}
+
+[class^="card-icon"] {
+  margin: 5px 0;
+  width: 35px;
+  height: 35px;
+  background-size: 35px;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.card-icon-clubs {
+  background-image: url(./Icons/clubs.png);
+}
+
+.card-icon-heart {
+  background-image: url(./Icons/heart.png);
+}
+
+.card-icon-diamond {
+  background-image: url(./Icons/diamond.png);
+}
+
+.card-icon-spade {
+  background-image: url(./Icons/spade.png);
+}

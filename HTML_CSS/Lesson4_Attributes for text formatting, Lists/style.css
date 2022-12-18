@@ -1,0 +1,16 @@
+* {
+  color: white;
+  background-color: #2e2e2e;
+}
+
+ol {
+  list-style: upper-roman;
+}
+
+ol ol {
+  list-style: decimal;
+}
+
+ol ol ol {
+  list-style: lower-latin;
+}

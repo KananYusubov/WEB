@@ -1,0 +1,51 @@
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+html {
+  background: url("./Images/world-cup-background.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.country {
+  list-style: none;
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+.group_header {
+  margin-left: 25%;
+  color: whitesmoke;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.country_name {
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 10px;
+  padding-bottom: 35px;
+}
+
+.country-ref :hover {
+  text-decoration-color: white;
+  color: #7158e2;
+}
+
+.country-ref {
+  text-decoration: none;
+}
+
+.flag {
+  width: 36px;
+  vertical-align: middle;
+}

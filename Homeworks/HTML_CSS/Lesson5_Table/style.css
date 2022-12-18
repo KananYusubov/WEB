@@ -1,0 +1,83 @@
+* {
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main table styles */
+table {
+  border-collapse: collapse;
+  border: 1px solid darkgrey;
+}
+
+th {
+  height: 30px;
+}
+
+td {
+  height: 30px;
+  text-align: center;
+  border: 1px solid darkgray;
+}
+
+/* Font styles */
+
+.normal {
+  font-style: normal;
+}
+
+.small {
+  font-size: 0.8em;
+}
+
+.italic {
+  font-style: italic;
+  font-weight: 100;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+/* Tag styles */
+
+dfn {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.small-td {
+  width: 40px;
+}
+
+/* Allign style */
+
+.left {
+  text-align: left;
+}
+
+/* Category styles */
+
+.aspect {
+  width: 70px;
+  background-color: #ffee99;
+}
+
+.simple {
+  width: 240px;
+  background-color: #ccccff;
+}
+
+.progresive {
+  width: 240px;
+  background-color: #ffbbbb;
+}
+
+.perfect {
+  width: 240px;
+  background-color: #aaffcc;
+}
+
+.prefect-progresive {
+  width: 240px;
+  background-color: #ffbbff;
+}

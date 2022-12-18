@@ -1,0 +1,28 @@
+* {
+  font-size: 15px;
+}
+
+h2 {
+  font-size: 23px;
+}
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+strong {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 17px;
+  color: red;
+}
+
+div {
+  text-align: center;
+}
+
+div span {
+  font-size: 25px;
+  background-color: #ffb0ab;
+}

@@ -1,0 +1,37 @@
+.list
+{
+   font-size: 35px;
+   color: blue;    
+}
+
+.first
+{
+    list-style: lower-alpha;
+}
+
+.second
+{
+    list-style: upper-alpha;
+}
+
+#UK
+{
+    list-style-image: url(image/united-kingdom.png);
+}
+
+#Mrc
+{
+    list-style-image: url(image/morocco.png);
+}
+
+#Qtr
+{
+    list-style-image: url(image/qatar.png);
+}
+
+ul li:hover
+{
+    color: tomato;
+    text-decoration: underline;
+    cursor:pointer;
+}

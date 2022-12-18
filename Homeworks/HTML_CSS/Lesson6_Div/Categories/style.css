@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Roboto+Condensed&family=Slabo+27px&display=swap");
+
+body {
+  background-color: #181a1b;
+}
+
+.categories {
+  width: 750px;
+  margin: 5% auto;
+  background-color: green;
+}
+
+.categorie {
+  border-style: dotted;
+  border-color: #3a00d8;
+  width: 300px;
+  height: 200px;
+  padding: 10px;
+  margin: 20px;
+  float: left;
+}
+
+[class^="categorie-icon"] {
+  width: 70px;
+  height: auto;
+  float: left;
+  border-left: thin outset #3a00d8;
+  border-top: thin outset #3a00d8;
+  border-bottom: medium outset #3a00d8;
+  border-right: medium outset #3a00d8;
+}
+
+.categorie-icon-production {
+  border-bottom: medium outset #3a00d8;
+  border-left: medium outset #3a00d8;
+  border-top: thin outset #3a00d8;
+  border-right: thin outset #3a00d8;
+}
+
+.categorie-icon-montage {
+  border-bottom: thin outset #3a00d8;
+  border-left: thin outset #3a00d8;
+  border-top: medium outset #3a00d8;
+  border-right: medium outset #3a00d8;
+}
+
+.categorie-icon-staging-light {
+  border-bottom: thin outset #3a00d8;
+  border-left: medium outset #3a00d8;
+  border-top: medium outset #3a00d8;
+  border-right: thin outset #3a00d8;
+}
+
+.categorie-header {
+  padding: 10px;
+  margin-left: 70px;
+}
+
+.categorie-name {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 25px;
+  color: #4656f5;
+}
+
+.categorie-define {
+  font-family: "Slabo 27px", serif;
+  color: #7090c6;
+}
+
+.categorie-details {
+  color: #c124ff;
+}
