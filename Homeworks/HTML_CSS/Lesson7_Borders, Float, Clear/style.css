@@ -1,0 +1,151 @@
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed:wght@700&display=swap");
+
+/* Reset ~ body */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Clear Fix */
+.container::before,
+.container::after {
+  content: "";
+  display: table;
+}
+
+.container::after {
+  clear: both;
+}
+
+/*#region Navbar  */
+
+.nav-bar {
+  width: 200px;
+  height: 100vh;
+  background-color: #333333;
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  text-align: left;
+  float: left;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin: 10px auto;
+  padding: 0;
+  padding-bottom: 10px;
+}
+
+.navbar-pages {
+  padding: 0;
+  margin-top: 10px;
+  list-style: none;
+}
+
+.page {
+  padding: 20px;
+  color: #878787;
+  border-bottom: 2px solid #202022;
+  cursor: pointer;
+}
+
+.page:first-child {
+  border-top: 2px solid #202022;
+}
+
+.page:hover {
+  background-color: #2b2e30;
+}
+
+/*#endregion Navbar  */
+
+/*#region Dashboard  */
+
+.dashboard {
+  width: calc(100% - 240px);
+  height: 100vh;
+  padding: 0 20px;
+  font-family: "Roboto Condensed", sans-serif;
+  /* background-color: #dbdbdb; */
+  background-color: whitesmoke;
+  float: left;
+}
+
+.dashboard-time {
+  margin: 0;
+  margin-left: 1%;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+
+.dashboard-charts {
+  width: 100%;
+  height: 35%;
+}
+
+.dashboard-chart {
+  width: 47%;
+  height: 100%;
+  margin: 1%;
+  padding: 0;
+  float: left;
+  border-radius: 30px;
+  border-collapse: collapse;
+  background: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard-chart-name {
+  margin: 0;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.dashboard-chart-image {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.dashboard-chart-image-container {
+  width: 150px;
+  height: 150px;
+  padding: 0;
+  margin: auto;
+  position: relative;
+}
+
+.dashboard-table {
+  margin: 0;
+  margin-top: 50px;
+  padding: 20px;
+  width: 100%;
+  text-align: left;
+  border-radius: 10px;
+  border-collapse: collapse;
+  background: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.dashboard-table th {
+  margin: 0;
+  padding: 10px;
+  border-bottom: 1px solid #b2bebf;
+}
+
+.dashboard-table td {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #b2bebf;
+}
+
+/*#endregion Dashboard  */
