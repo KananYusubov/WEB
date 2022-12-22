@@ -1,0 +1,121 @@
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed:wght@700&display=swap");
+
+/* Clear Fix */
+.container::before,
+.container::after {
+  content: "";
+  display: table;
+}
+
+.container::after {
+  clear: both;
+}
+
+/* Reset Main tag(s) */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #30383c38;
+}
+
+/* Navigation Bar */
+
+nav {
+  float: left;
+  width: 100px;
+  height: 100vh;
+  margin-top: -50px;
+  margin-right: 30px;
+  position: absolute;
+  background-color: #181a1b;
+  color: transparent;
+  font-family: "Roboto Condensed", sans-serif;
+  transition-property: width, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+nav:hover {
+  width: 250px;
+  color: #7090c6;
+}
+
+.pages {
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+  list-style: none;
+  border-top: 1px solid #373f9561;
+}
+
+.pages-header {
+  width: 70px;
+  margin: 10px auto;
+}
+
+.pages-header-icon {
+  width: 70px;
+  height: 70px;
+  display: inline;
+  margin: 0 auto;
+}
+
+.pages-header-text {
+  padding: 0;
+  margin: 0;
+  width: 70px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.page {
+  height: 30px;
+  margin: 0;
+  padding: 20px;
+  padding-left: 30px;
+  cursor: pointer;
+  border-bottom: 1px solid #373f9561;
+  transition-duration: 0.2s;
+}
+
+.page-icon {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  float: left;
+}
+
+.page-name {
+  margin: 0;
+  padding: 0;
+  margin-left: 25px;
+  font-size: 25px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+/* Navigation Bar Hover Effects */
+
+.page:hover {
+  background-color: #708fc639;
+  color: #fff;
+}
+
+/* Page Section */
+
+.page-info {
+  /* float: left; */
+  box-sizing: border-box;
+  margin-top: 50px;
+  margin-left: 130px;
+}
+
+.info-header {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.info {
+  font-family: "Roboto", sans-serif;
+}

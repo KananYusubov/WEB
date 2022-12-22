@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation | Transition</title>
+    <style>
+      a {
+        text-decoration: none;
+        display: inline-block;
+        font-size: 2rem;
+        background-color: #003fa3;
+        color: #fff;
+        padding: 15px 20px;
+        border-radius: 20px;
+        /* transition: all 0.9s ease 0s; */
+        transition-property: background-color, padding;
+        transition-duration: 1s;
+        transition-timing-function: ease;
+        transition-delay: 0.1s;
+      }
+      a:hover {
+        /* background-color: #012770; */
+        background-color: magenta;
+        padding: 30px 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#">Call to action</a>
+  </body>
+</html>

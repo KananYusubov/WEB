@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation | Feedback Button</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .callback {
+        width: 300px;
+        height: 150px;
+        margin-left: -300px;
+        background-color: burlywood;
+        transition: 1s;
+      }
+
+      .callback p {
+        color: white;
+        padding: 30px;
+      }
+
+      .callback::after {
+        content: "Callback";
+        background-color: violet;
+        text-align: center;
+        width: 150px;
+        position: absolute;
+        padding: 5px 0;
+        border-radius: 0 0 8px 8px;
+        left: 0px;
+        top: 166px;
+        transform: rotate(-90deg);
+        transform-origin: 0 0;
+        transition: 1s;
+      }
+
+      .callback:hover::after {
+        left: 300px;
+      }
+
+      .callback:hover {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="callback">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur Lorem ipsum dolor sit.
+        adipisicing , ex odit? Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+        amet.
+      </p>
+    </div>
+  </body>
+</html>
