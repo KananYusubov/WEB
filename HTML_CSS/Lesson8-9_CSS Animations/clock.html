@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation | Clock</title>
+    <style>
+      .circle {
+        width: 150px;
+        height: 150px;
+        box-sizing: border-box;
+        padding: 75px 75px;
+        background-color: #ccc;
+        border-radius: 50%;
+        margin: 35% auto;
+        border: 5px outset blue;
+        position: relative;
+      }
+
+      .point {
+        width: 10px;
+        height: 10px;
+        margin:auto;
+        top: 47.5%;
+        left: 47.5%;
+        background-color: black;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .scorpion_ms {
+        height: 2px;
+        width: 80px;
+        background-color: black;
+        position: absolute;
+        animation: spin 1s linear infinite;
+        transform-origin: 1px;
+      }
+
+      .scorpion_s {
+        height: 3px;
+        width: 70px;
+        background-color: black;
+        position: absolute;
+        animation: spin 3s linear infinite;
+        transform-origin: 1px;
+      }
+
+      .scorpion_h {
+        height: 5px;
+        width: 60px;
+        background-color: black;
+        position: absolute;
+        animation: spin 10s linear infinite;
+        transform-origin: 1px;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(-180deg);
+        }
+        to {
+          transform: rotate(180deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle">
+      <div class="point"></div>
+      <div class="scorpion_ms"></div>
+      <div class="scorpion_s"></div>
+      <div class="scorpion_h"></div>
+    </div>
+  </body>
+</html>

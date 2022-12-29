@@ -1,0 +1,95 @@
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@600&display=swap");
+html,
+body {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  background: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+}
+
+.plan {
+  float: left;
+  width: 220px;
+  height: 370px;
+  margin: 10px;
+  padding: 1%;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 10px 10px 9px #c5c5c5, -10px -10px 9px #c5c5c598;
+  transition-duration: 0.5s;
+  position: relative;
+}
+
+.plan:hover {
+  transform: scale(1.2);
+  z-index: 2;
+  /* padding: 3.5%; */
+}
+
+.plan-name {
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  font-size: large;
+  letter-spacing: 2px;
+}
+
+.separator {
+  position: absolute;
+  margin-left: -4%;
+  height: 3px;
+  width: 100%;
+  border: 0;
+}
+
+.plan-price-header {
+  margin: 20px 0;
+}
+
+.price {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 40px;
+  margin: 0;
+}
+
+.pricing-time {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #c5c5c5;
+  font-weight: 700;
+}
+
+.feature {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.buy-button {
+  padding: 10px 30px;
+  width: 50px;
+  margin: 20px auto;
+  color: #fff;
+  border-radius: 10px;
+  font-family: "Roboto Condensed", sans-serif;
+  cursor: pointer;
+}
+
+/* Plan Background Colors */
+
+#basic {
+  background-color: #62ba32;
+}
+
+#standard {
+  background-color: #296588;
+}
+
+#professional {
+  background-color: #d6903a;
+}
+
+#enterprise {
+  background-color: #c63555;
+}

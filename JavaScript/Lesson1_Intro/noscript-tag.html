@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <noscript>
+      <style>
+        #msg {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #bbb;
+          text-align: center;
+          padding-top: 150px;
+        }
+      </style>
+    </noscript>
+    <style>
+      * {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="msg">Allow scripts to use this page.</div>
+  </body>
+  <script>
+    window.msg.innerHTML = "JS is running now!";
+  </script>
+</html>

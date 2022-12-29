@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation | H1</title>
+    <style>
+      h1 {
+        background-color: blueviolet;
+        width: 30%;
+        color: aliceblue;
+        text-align: center;
+        border: 5px double black;
+      }
+
+      @keyframes h1Animation {
+        from {
+          margin-left: 0px;
+        }
+        to {
+          margin-left: 500px;
+        }
+      }
+
+      h1 {
+        animation: h1Animation 1s ease-out alternate infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Some Text</h1>
+  </body>
+</html>
