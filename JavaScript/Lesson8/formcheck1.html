@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <form action="" method="get" onsubmit="return checkForm(event)">
+       <input type="text"
+                placeholder="Enter your name"
+                id="name"
+                name="name">                
+        <input type="submit" value="Enter">
+    </form>
+    <script>
+        function checkForm(e){
+            var nameText = document.getElementById("name").value;
+            if (nameText.length < 1) {
+                return false;}
+            return true;
+        }
+    </script>
+</body>
+</html>

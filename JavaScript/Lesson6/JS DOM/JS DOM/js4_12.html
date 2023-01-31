@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Drag-and-Drop</title>
+    <style>
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            background-color: tomato;
+            border: 1px solid red;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    var isDrag = false;
+    var x;
+    var y;
+    div1.addEventListener("mousedown", function (e) {
+        isDrag = true;
+        x = e.offsetX;
+        y = e.offsetY;
+    })
+    document.addEventListener("mouseup", function (e) {
+        isDrag = false;
+    })
+    document.addEventListener("mousemove", function (e) {
+        if (isDrag) {
+            div1.style.left = (e.pageX - x) + "px";
+            div1.style.top = (e.pageY - y) + "px";
+        }
+    })
+</script>
+</body>
+</html>

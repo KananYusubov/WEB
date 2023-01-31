@@ -27,7 +27,6 @@ body {
 .plan:hover {
   transform: scale(1.2);
   z-index: 2;
-  /* padding: 3.5%; */
 }
 
 .plan-name {

@@ -1,0 +1,553 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@500&display=swap');
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #020303;
+}
+
+#not-found {
+    display: flex;
+}
+
+.hidden {
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+/*region Brand Navbar*/
+
+.brand-navbar {
+    border-bottom: 2px solid #202020;
+    gap: 20px;
+    height: 70px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+}
+
+.brand {
+    display: flex;
+    width: 113px;
+    align-items: center;
+}
+
+.brand img {
+    width: 30px;
+    height: 30px;
+}
+
+.brand-name {
+    color: #eeeeee;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
+}
+
+.brand-name-wolf {
+    color: #f36b21;
+    margin-right: 2px;
+}
+
+.input {
+    box-sizing: border-box;
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #ceee;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.input:focus, input:hover {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: #7140fd;
+}
+
+.input:focus:invalid, input:hover:invalid {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: red;
+}
+
+.input::placeholder {
+    color: #ced3ee;
+}
+
+.input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+/* === removing default button style ===*/
+.github-button {
+    cursor: pointer;
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+}
+
+/* button styling */
+.github-button {
+    cursor: pointer;
+    --border-right: 6px;
+    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --animation-color: #37FF8B;
+    --fs-size: 1em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+
+/* this is the text, when you hover on button */
+.hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0;
+    inset: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+}
+
+/* hover */
+.github-button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color))
+}
+
+/*endregion Brand Navbar*/
+
+.weather {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/*region Current Weather*/
+.current-weather {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    flex-grow: 1;
+    background-image: url("./Images/Background/current-weather-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    margin: 0 20px;
+    padding: 40px;
+    width: calc(100% - 40px);
+    height: 300px;
+    border-radius: 20px;
+}
+
+.side-info {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*region City Info*/
+
+
+.header-info {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-direction: column;
+
+    /* From https://css.glass */
+    background: rgba(150, 60, 81, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(150, 60, 81, 1);
+}
+
+#city-name {
+    margin-top: 10px;
+    font-family: "Roboto", san-serif, serif;
+    font-style: oblique;
+    font-size: 40px;
+    color: #f1eeff;
+}
+
+#weather-date {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family: "Roboto", san-serif, serif;
+    color: #c0becc;
+}
+
+/*endregion City Info*/
+
+/*region Info Cards*/
+
+.info-cards {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sun-infos-card {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.sun-info {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*backdrop-filter: blur(10px);*/
+}
+
+.sun-info-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sun-info-header-icon {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sun-info-header-text {
+    font-size: 20px;
+    font-style: oblique;
+    font-family: "Roboto", san-serif, serif;
+    color: white;
+}
+
+.sun-info-date {
+    margin-top: 10px;
+    font-size: 30px;
+    padding: 0 2px;
+    font-style: oblique;
+    font-family: "Roboto Condensed", san-serif, serif;
+    color: #fff;
+}
+
+#sunrise {
+    background-image: url("./Images/Background/sunrise.jpg");
+}
+
+#sunrise .sun-info-header-icon {
+    background-image: url("./Images/Weather Icons/General Weather/sunrise.png");
+}
+
+#sunset {
+    background-image: url("./Images/Background/sunset.jpg");
+}
+
+#sunset .sun-info-header-icon {
+    background-image: url("./Images/Weather Icons/General Weather/sunset.png");
+}
+
+.more-infos-card {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    display: inline-flex;
+    /*justify-content: space-between;*/
+
+    /* From https://css.glass */
+    background: rgba(39, 35, 40, 0.62);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.more-info {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.more-info-img {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.more-info-text {
+    font-style: oblique;
+    font-family: "Roboto Condensed", san-serif, serif;
+    color: #d7d2db;
+}
+
+#wind .more-info-img {
+    background-image: url("./Images/Weather Icons/General Weather/wind.png");
+}
+
+#humidity .more-info-img {
+    background-image: url("./Images/Weather Icons/General Weather/humidity.png");
+}
+
+/*endregion Info Cards*/
+
+.current-weather-card {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #eeeeee;
+
+    /* From https://css.glass */
+    background: rgba(44, 45, 99, 0.64);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(44, 45, 99, 1);
+}
+
+.today-text {
+    margin: 10px auto -20px 10px;
+    padding: 7px;
+    border-radius: 50px;
+    background-color: #2a2a6e;
+    font-family: "Roboto", san-serif, serif;
+    font-style: oblique;
+    letter-spacing: 1px;
+}
+
+.current-weather-icon {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    /*margin: 0;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#current-weather-current-temp {
+    /*margin-top: -10px;*/
+    letter-spacing: 2px;
+    font-style: oblique;
+    font-family: "Roboto Condensed", san-serif, serif;
+    font-size: 35px;
+}
+
+.weather-end-values {
+    margin-bottom: 5px;
+    display: flex;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-style: oblique;
+    font-family: "Roboto Condensed", san-serif, serif;
+}
+
+
+/*endregion Current Weather*/
+
+/*region Hourly Reports*/
+
+#hourly-weather {
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+    flex-grow: 1;
+    overflow: auto;
+    justify-content: space-evenly;
+}
+
+.hourly-report-text {
+    margin-left: 20px;
+    font-size: 25px;
+    font-family: "Chivo Mono", monospace;
+    color: #fff;
+}
+
+.report-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 200px;
+    height: 260px;
+    border-radius: 30px;
+    background-color: #0d1424;
+    color: #786ae5;
+    transition: all;
+    transition-duration: 0.5s;
+}
+
+.report-card:hover {
+    background-color: #004daa;
+    color: #e8e6e3;
+}
+
+.report-icon {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.report-time-info {
+    display: flex;
+    gap: 10px;
+    color: #e8e6e3;
+}
+
+.report-time-description {
+    padding: 7px;
+    border-radius: 50px;
+    background-color: #2a2a6e;
+    font-size: 15px;
+    font-family: "Roboto", san-serif, serif;
+    font-style: oblique;
+    letter-spacing: 1px;
+}
+
+.report-time-hour {
+    padding: 7px;
+    border-radius: 50px;
+    background-color: #241786;
+    font-size: 15px;
+    font-family: "Roboto", san-serif, serif;
+    font-style: oblique;
+    letter-spacing: 1px;
+}
+
+.report-temp-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-size: 30px;
+    font-style: oblique;
+    font-family: "Roboto", san-serif, serif;
+}
+
+.report-additional-infos {
+    height: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.report-additional-info {
+    display: flex;
+    gap: 5px;
+}
+
+.report-additional-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+.report-additional-text {
+    font-size: 15px;
+    font-style: normal;
+    font-family: "Roboto", san-serif, serif;
+}
+
+.report-weather-description {
+    margin-top: 5px;
+    margin-left: 7px;
+    font-size: 15px;
+    font-style: normal;
+    font-family: "Roboto", san-serif, serif;
+}
+
+/*endregion Hourly Reports*/
+
+/*region 404 */
+
+
+.not-found {
+    width: 560px;
+    height: 225px;
+    /*margin-right: -10px;*/
+}
+
+.starry-sky {
+    display: block;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    object-fit: cover;
+}
+
+.notfound-copy {
+    color: #fff;
+    position: fixed;
+    top: 80px;
+    right: 10%;
+    text-align: right;
+}
+
+h1 {
+    margin-right: 20px;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.all-stars {
+    animation: blinkblink 7s linear infinite;
+}
+
+@keyframes blinkblink {
+    50% {
+        opacity: 0.1;
+    }
+}
+
+/*endregion 404*/

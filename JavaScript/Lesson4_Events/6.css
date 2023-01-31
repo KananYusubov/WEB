@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  position: relative;
+}
+
+#gun,
+#bullet,
+#target {
+  position: absolute;
+}
+
+#bullet,
+#target {
+  border-radius: 50%;
+}
+
+#gun {
+  background-color: darkblue;
+  height: 30px;
+  width: 60px;
+  left: 0;
+  top: 50px;
+}
+
+#bullet {
+  background-color: crimson;
+  height: 30px;
+  width: 30px;
+  left: 30px;
+  top: 50px;
+  z-index: -1;
+}
+
+#target {
+  background-color: brown;
+  height: 50px;
+  width: 50px;
+  top: 40px;
+  left: 250px;
+}

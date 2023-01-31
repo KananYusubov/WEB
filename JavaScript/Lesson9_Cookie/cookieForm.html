@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Form</title>
+  </head>
+  <!-- <body onload="checkRegistration()"> -->
+  <body onload="checkRegistration()">
+    <div id="regDiv"></div>
+
+    <script>
+      function checkRegistration() {
+        var cookie = document.cookie;
+        var rD = document.getElementById("regDiv");
+        var s = cookie.split("; ");
+        var cookieObj = {};
+        var c;
+
+        for (let i = 0; i < s.length; i++) {
+          c = s[i].split("=");
+          cookieObj[c[0]] = c[1];
+        }
+
+        if ("register" in cookieObj) {
+          rD.innerHTML = "Hello, " + cookieObj["register"];
+        } else {
+          rD.innerHTML =
+            '<label for="name">Name </label><input type="text" name="name" id="name" /> <input type="button" value="Register" onclick="regFunc()" />';
+        }
+      }
+
+      function regFunc() {
+        var inputName = document.getElementById("name");
+        var name = inputName.value;
+        var expDat = new Date();
+        expDat.setTime(new Date().gerTime() + 20 * 1000);
+        document.cookie = `register = ${name};expires=${expDat.toGMTString()};path=/`;
+        checkRegistration();
+      }
+    </script>
+  </body>
+</html>

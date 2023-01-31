@@ -344,7 +344,7 @@ function CalculateAge(birthYear) {
 //       break;
 //     case -1:
 //       endValue = currentValue;
-//       diapason = currentValue - startValue;
+//       diapason = endValue - startValue;
 
 //       if (diapason <= 1) {
 //         condition = false;

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>JS | DOM 1</title><style>
+    #div1{
+      border: 2px solid black;
+      height: 150px;
+      width: 400px;
+      margin: 20px;
+      padding: 15px;
+    }
+
+    #div2{
+      border: 1px dashed tomato;
+      height: 140px;
+      width: 200px;
+      float: right;
+      padding: 5px;
+      overflow: auto;
+    }
+
+</style></head><body><div id="div1"><div id="div2"></div><h1>Header</h1><p>Paragraph<br><span>Span</span> </p><button onclick="getStructure()">Get Structure</button></div><script>
+  function  getStructure(){
+    const c = document.documentElement.childNodes;
+    let message = "";
+    message = getStructureString(c);
+    window.div2.innerHTML = message;
+  }
+
+  function  getStructureString(c,spaceCount=1){
+      let msg = ""
+      for (let i = 0; i < c.length; i++) {
+          let node = c[i];
+
+          for (let j = 0; j < spaceCount; j++) {
+              msg+=" &nbsp";
+          }
+
+          msg+= `${(+i+1)}. ${node.tagName} (${node.nodeName}) <br>`;
+
+          if(!node.hasChildNodes()) continue;
+
+          msg += getStructureString(node.childNodes,+spaceCount+1)
+      }
+      return msg;
+  }
+
+</script></body></html>
