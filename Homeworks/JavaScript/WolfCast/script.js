@@ -1,242 +1,257 @@
 /* API Key */
-
+// https://home.openweathermap.org/api_keys
 const API_KEY = "your_api_key";
-const cityName = document.getElementById('city-name-input');
+const cityName = document.getElementById("city-name-input");
 const cityMask = /[a-z A-z]{1,}/;
 let WeatherVisibilityStatus = true;
 
 FirstStart();
 
 cityName.onkeydown = function (e) {
-    if (cityMask.test(cityName.value) && e.key === "Enter") {
-        GetCoordinatesOfCity(cityName.value);
-    }
-}
+  if (cityMask.test(cityName.value) && e.key === "Enter") {
+    GetCoordinatesOfCity(cityName.value);
+  }
+};
 
 function changeVisibility(weatherIsVisible) {
-    if (weatherIsVisible === WeatherVisibilityStatus) return;
-    WeatherVisibilityStatus = weatherIsVisible;
-    let weather = document.getElementById('weather');
-    let notfound = document.getElementById('notfound');
-    let notfoundText = document.getElementById('not-found-text');
-    let notfoundSvg = document.getElementById('not-found-svg');
+  if (weatherIsVisible === WeatherVisibilityStatus) return;
+  WeatherVisibilityStatus = weatherIsVisible;
+  let weather = document.getElementById("weather");
+  let notfound = document.getElementById("notfound");
+  let notfoundText = document.getElementById("not-found-text");
+  let notfoundSvg = document.getElementById("not-found-svg");
 
-    if (weatherIsVisible) {
-        weather.classList.remove('hidden');
-        notfound.classList.add('hidden');
-        notfoundSvg.classList.remove('starry-sky');
-        notfoundSvg.classList.add('hidden');
-        notfoundText.classList.add('hidden');
-    } else {
-        weather.classList.add('hidden');
-        notfound.classList.remove('hidden');
-        notfoundSvg.classList.add('starry-sky');
-        notfoundSvg.classList.remove('hidden');
-        notfoundText.classList.remove('hidden');
-    }
-
-
+  if (weatherIsVisible) {
+    weather.classList.remove("hidden");
+    notfound.classList.add("hidden");
+    notfoundSvg.classList.remove("starry-sky");
+    notfoundSvg.classList.add("hidden");
+    notfoundText.classList.add("hidden");
+  } else {
+    weather.classList.add("hidden");
+    notfound.classList.remove("hidden");
+    notfoundSvg.classList.add("starry-sky");
+    notfoundSvg.classList.remove("hidden");
+    notfoundText.classList.remove("hidden");
+  }
 }
 
 function GetCoordinatesOfCity(cityName) {
-    let coordinates = null;
-    if (!cityMask.test(cityName))
-        return coordinates;
+  let coordinates = null;
+  if (!cityMask.test(cityName)) return coordinates;
 
-    let request;
+  let request;
 
-    if (window.XMLHttpRequest) {
-        request = new XMLHttpRequest();
-    } else {
-        request = new ActiveXObject("Microsoft.XMLHTTP");
+  if (window.XMLHttpRequest) {
+    request = new XMLHttpRequest();
+  } else {
+    request = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  request.responseType = "json";
+
+  request.open(
+    "GET",
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${API_KEY}`
+  );
+
+  request.onload = function () {
+    if (request.readyState !== 4 && request.status !== 200) return;
+
+    let response = request.response;
+
+    if (response <= 2) {
+      changeVisibility(false);
+      return;
     }
 
-    request.responseType = "json";
+    changeVisibility(true);
+    response = response[0];
 
-    request.open("GET", `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${API_KEY}`);
+    GetCurrentWeatherForecast(response.lat, response.lon);
+    GetHourlyWeatherForecast(response.lat, response.lon);
+  };
 
-
-    request.onload = function () {
-        if (request.readyState !== 4 && request.status !== 200) return;
-
-        let response = request.response;
-
-        if (response <= 2) {
-            changeVisibility(false);
-            return;
-        }
-
-        changeVisibility(true);
-        response = response[0];
-
-        GetCurrentWeatherForecast(response.lat, response.lon);
-        GetHourlyWeatherForecast(response.lat, response.lon);
-
-    }
-
-    request.send();
+  request.send();
 }
 
 function GetCurrentWeatherForecast(lat, lon) {
-    let request;
+  let request;
 
-    if (window.XMLHttpRequest) {
-        request = new XMLHttpRequest();
-    } else {
-        request = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+  if (window.XMLHttpRequest) {
+    request = new XMLHttpRequest();
+  } else {
+    request = new ActiveXObject("Microsoft.XMLHTTP");
+  }
 
-    request.responseType = "json";
+  request.responseType = "json";
 
-    request.open("POST", `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=en&appid=${API_KEY}`);
+  request.open(
+    "POST",
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=en&appid=${API_KEY}`
+  );
 
-    request.onload = function () {
-        if (request.readyState !== 4 && request.status !== 200) return;
-        let response = request.response;
+  request.onload = function () {
+    if (request.readyState !== 4 && request.status !== 200) return;
+    let response = request.response;
 
-        console.log(response)
+    console.log(response);
 
-        let cityName = document.getElementById('city-name');
-        let date = document.getElementById('weather-date');
-        let humidity = document.getElementById('humidity-text');
-        let wind = document.getElementById('wind-text');
-        let sunrise = document.getElementById('sunrise-text');
-        let sunset = document.getElementById('sunset-text');
-        let todayIcon = document.getElementById('today-weather-icon');
-        let currentTemp = document.getElementById('current-weather-current-temp');
-        let minTemp = document.getElementById('min-value');
-        let maxTemp = document.getElementById('max-value');
+    let cityName = document.getElementById("city-name");
+    let date = document.getElementById("weather-date");
+    let humidity = document.getElementById("humidity-text");
+    let wind = document.getElementById("wind-text");
+    let sunrise = document.getElementById("sunrise-text");
+    let sunset = document.getElementById("sunset-text");
+    let todayIcon = document.getElementById("today-weather-icon");
+    let currentTemp = document.getElementById("current-weather-current-temp");
+    let minTemp = document.getElementById("min-value");
+    let maxTemp = document.getElementById("max-value");
 
-        cityName.innerText = response.name.replaceAll('ǝ', 'ə');
-        date.innerText = new Date(response.dt * 1000).toLocaleString();
-        sunrise.innerText = GetHourFromDT(response.sys.sunrise);
-        sunset.innerText = GetHourFromDT(response.sys.sunset);
-        humidity.innerText = response.main.humidity;
-        wind.innerText = response.wind.speed;
-        console.log('\n\ntoday wather icon: ' + GetIconPath(response.weather[0].icon));
-        todayIcon.style.backgroundImage = `url('${GetIconPath(response.weather[0].icon)}')`;
-        currentTemp.innerText = `${response.main.temp}℃`
-        minTemp.innerText = response.main.temp_min;
-        maxTemp.innerText = response.main.temp_max;
-    }
+    cityName.innerText = response.name.replaceAll("ǝ", "ə");
+    date.innerText = new Date(response.dt * 1000).toLocaleString();
+    sunrise.innerText = GetHourFromDT(response.sys.sunrise);
+    sunset.innerText = GetHourFromDT(response.sys.sunset);
+    humidity.innerText = response.main.humidity;
+    wind.innerText = response.wind.speed;
+    console.log(
+      "\n\ntoday wather icon: " + GetIconPath(response.weather[0].icon)
+    );
+    todayIcon.style.backgroundImage = `url('${GetIconPath(
+      response.weather[0].icon
+    )}')`;
+    currentTemp.innerText = `${response.main.temp}℃`;
+    minTemp.innerText = response.main.temp_min;
+    maxTemp.innerText = response.main.temp_max;
+  };
 
-    request.send();
+  request.send();
 }
 
 function GetHourlyWeatherForecast(lat, lon) {
-    let request;
+  let request;
 
-    console.log('Hourly Start')
+  console.log("Hourly Start");
 
-    if (window.XMLHttpRequest) {
-        request = new XMLHttpRequest();
-    } else {
-        request = new ActiveXObject("Microsoft.XMLHTTP");
+  if (window.XMLHttpRequest) {
+    request = new XMLHttpRequest();
+  } else {
+    request = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  request.responseType = "json";
+  request.open(
+    "POST",
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=3&units=metric&appid=${API_KEY}`
+  );
+
+  request.onload = function () {
+    if (request.readyState !== 4 && request.status !== 200) return;
+
+    let response = request.response;
+    let hourlyWeather = document.getElementById("hourly-weather");
+    hourlyWeather.innerHTML = "";
+    for (const listKey in response.list) {
+      hourlyWeather.append(AddReportCard(response.list[listKey]));
     }
+  };
 
-    request.responseType = "json";
-    request.open(
-        "POST",
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=3&units=metric&appid=${API_KEY}`
-    );
-
-    request.onload = function () {
-        if (request.readyState !== 4 && request.status !== 200) return;
-
-        let response = request.response;
-        let hourlyWeather = document.getElementById('hourly-weather');
-        hourlyWeather.innerHTML = '';
-        for (const listKey in response.list) {
-            hourlyWeather.append(AddReportCard(response.list[listKey]));
-        }
-
-    }
-
-    request.send();
+  request.send();
 }
 
 function AddReportCard(forecast) {
-    //region Create Elements
+  //region Create Elements
 
-    let reportCard = document.createElement('div');
-    let reportIcon = document.createElement('div');
-    let reportTimeInfo = document.createElement('div');
-    let reportTimeDescription = document.createElement('div');
-    let reportTimeHour = document.createElement('div');
-    let reportTempInfo = document.createElement('div');
-    let reportMaxTemp = document.createElement('div');
-    let reportMinTemp = document.createElement('div');
-    let reportAdditionalInfos = document.createElement('div');
-    let reportAdditionalInfoWind = document.createElement('div');
-    let reportAdditionalInfoWindText = document.createElement('div');
-    let reportAdditionalInfoHumidity = document.createElement('div');
-    let reportAdditionalInfoHumidityText = document.createElement('div');
-    let reportWeatherDescription = document.createElement('div');
+  let reportCard = document.createElement("div");
+  let reportIcon = document.createElement("div");
+  let reportTimeInfo = document.createElement("div");
+  let reportTimeDescription = document.createElement("div");
+  let reportTimeHour = document.createElement("div");
+  let reportTempInfo = document.createElement("div");
+  let reportMaxTemp = document.createElement("div");
+  let reportMinTemp = document.createElement("div");
+  let reportAdditionalInfos = document.createElement("div");
+  let reportAdditionalInfoWind = document.createElement("div");
+  let reportAdditionalInfoWindText = document.createElement("div");
+  let reportAdditionalInfoHumidity = document.createElement("div");
+  let reportAdditionalInfoHumidityText = document.createElement("div");
+  let reportWeatherDescription = document.createElement("div");
 
-    //endregion Create Elements
+  //endregion Create Elements
 
-    //region Initialize Elements
+  //region Initialize Elements
 
-    reportCard.classList.add('report-card');
+  reportCard.classList.add("report-card");
 
-    reportIcon.classList.add('report-icon');
-    reportIcon.style.backgroundImage = `url('${GetIconPath(forecast.weather[0].icon)}')`;
+  reportIcon.classList.add("report-icon");
+  reportIcon.style.backgroundImage = `url('${GetIconPath(
+    forecast.weather[0].icon
+  )}')`;
 
-    reportTimeInfo.classList.add('report-time-info');
+  reportTimeInfo.classList.add("report-time-info");
 
-    reportTimeDescription.classList.add('report-time-description');
-    reportTimeDescription.innerText = forecast.weather[0].main;
+  reportTimeDescription.classList.add("report-time-description");
+  reportTimeDescription.innerText = forecast.weather[0].main;
 
-    reportTimeHour.classList.add('report-time-hour');
-    reportTimeHour.innerText = GetHourFromDT(forecast.dt);
+  reportTimeHour.classList.add("report-time-hour");
+  reportTimeHour.innerText = GetHourFromDT(forecast.dt);
 
-    reportTempInfo.classList.add('report-temp-info');
+  reportTempInfo.classList.add("report-temp-info");
 
-    reportMaxTemp.innerHTML = `${forecast.main.temp_max}<sup>°</sup>`;
-    reportMinTemp.innerHTML = `${forecast.main.temp_max}<sup>°</sup>`;
+  reportMaxTemp.innerHTML = `${forecast.main.temp_max}<sup>°</sup>`;
+  reportMinTemp.innerHTML = `${forecast.main.temp_max}<sup>°</sup>`;
 
-    reportAdditionalInfos.classList.add('report-additional-infos');
+  reportAdditionalInfos.classList.add("report-additional-infos");
 
-    reportAdditionalInfoWind.classList.add('report-additional-info');
-    reportAdditionalInfoWind.innerHTML = GetAdditionalInfoIconSVG('wind');
+  reportAdditionalInfoWind.classList.add("report-additional-info");
+  reportAdditionalInfoWind.innerHTML = GetAdditionalInfoIconSVG("wind");
 
-    reportAdditionalInfoWindText.classList.add('report-additional-text');
-    reportAdditionalInfoWindText.innerText = `${forecast.wind.speed} m/s`;
+  reportAdditionalInfoWindText.classList.add("report-additional-text");
+  reportAdditionalInfoWindText.innerText = `${forecast.wind.speed} m/s`;
 
-    reportAdditionalInfoHumidity.classList.add('report-additional-info');
-    reportAdditionalInfoHumidity.innerHTML = GetAdditionalInfoIconSVG('humidity');
+  reportAdditionalInfoHumidity.classList.add("report-additional-info");
+  reportAdditionalInfoHumidity.innerHTML = GetAdditionalInfoIconSVG("humidity");
 
-    reportAdditionalInfoHumidityText.classList.add('report-additional-text');
-    reportAdditionalInfoHumidityText.innerText = `${forecast.main.humidity} %`;
+  reportAdditionalInfoHumidityText.classList.add("report-additional-text");
+  reportAdditionalInfoHumidityText.innerText = `${forecast.main.humidity} %`;
 
-    reportWeatherDescription.classList.add('report-weather-description');
-    reportWeatherDescription.innerText = forecast.weather[0].description;
+  reportWeatherDescription.classList.add("report-weather-description");
+  reportWeatherDescription.innerText = forecast.weather[0].description;
 
-    //endregion Initialize Elements
+  //endregion Initialize Elements
 
-    //region Add Child To Elements
+  //region Add Child To Elements
 
-    reportTimeInfo.append(reportTimeDescription, reportTimeHour);
+  reportTimeInfo.append(reportTimeDescription, reportTimeHour);
 
-    reportTempInfo.append(reportMaxTemp, reportMinTemp);
+  reportTempInfo.append(reportMaxTemp, reportMinTemp);
 
-    reportAdditionalInfoWind.append(reportAdditionalInfoWindText);
+  reportAdditionalInfoWind.append(reportAdditionalInfoWindText);
 
-    reportAdditionalInfoHumidity.append(reportAdditionalInfoHumidityText);
+  reportAdditionalInfoHumidity.append(reportAdditionalInfoHumidityText);
 
-    reportAdditionalInfos.append(reportAdditionalInfoWind, reportAdditionalInfoHumidity);
+  reportAdditionalInfos.append(
+    reportAdditionalInfoWind,
+    reportAdditionalInfoHumidity
+  );
 
-    reportCard.append(reportIcon, reportTimeInfo, reportTempInfo, reportAdditionalInfos, reportWeatherDescription);
+  reportCard.append(
+    reportIcon,
+    reportTimeInfo,
+    reportTempInfo,
+    reportAdditionalInfos,
+    reportWeatherDescription
+  );
 
-    //endregion Add Child To Elements
+  //endregion Add Child To Elements
 
-    return reportCard;
+  return reportCard;
 }
 
 function GetAdditionalInfoIconSVG(infoType) {
-    switch (infoType) {
-        case 'wind':
-            return `<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" id="first_1"
+  switch (infoType) {
+    case "wind":
+      return `<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" id="first_1"
                              x="0px" y="0px" viewBox="0 0 30 30" class="text-[28px] text-[var(--secondary)]"
                              height="16px" width="16px" xmlns="http://www.w3.org/2000/svg"
                              data-darkreader-inline-fill="">
@@ -267,8 +282,8 @@ function GetAdditionalInfoIconSVG(infoType) {
 \t M22.81,17.04c0,0.24,0.08,0.43,0.24,0.58c0.16,0.16,0.36,0.24,0.58,0.24c0.24,0,0.45-0.08,0.61-0.23c0.17-0.16,0.25-0.35,0.25-0.59
 \tc0-0.23-0.08-0.43-0.25-0.6c-0.17-0.17-0.37-0.25-0.61-0.25c-0.23,0-0.42,0.08-0.58,0.25C22.9,16.61,22.81,16.81,22.81,17.04z"></path>
                         </svg>`;
-        case 'humidity':
-            return `       <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" id="second_2"
+    case "humidity":
+      return `       <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" id="second_2"
                              x="0px" y="0px" viewBox="0 0 30 30" class="text-[28px] text-[var(--secondary)]"
                              height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"
                              data-darkreader-inline-stroke=""
@@ -297,63 +312,73 @@ function GetAdditionalInfoIconSVG(infoType) {
 \t M17.41,21.02c0-0.22,0.08-0.41,0.25-0.58c0.17-0.17,0.37-0.25,0.6-0.25c0.23,0,0.43,0.08,0.59,0.24c0.16,0.16,0.24,0.36,0.24,0.58
 \tc0,0.24-0.08,0.44-0.24,0.6c-0.16,0.17-0.35,0.25-0.59,0.25c-0.24,0-0.44-0.08-0.6-0.25C17.5,21.45,17.41,21.25,17.41,21.02z"></path>
                         </svg>`;
-    }
+  }
 }
 
-const GetHourFromDT = dt => new Date(dt * 1000).toLocaleTimeString(undefined, {hour: '2-digit', minute: '2-digit',});
+const GetHourFromDT = (dt) =>
+  new Date(dt * 1000).toLocaleTimeString(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
 function GetIconPath(iconId) {
-    let differenceWeatherIcons = ['01', '02', '03', '09'];
-    let path = differenceWeatherIcons.includes(iconId.substring(0, 2))
-        ? iconId[2] === 'd'
-            ? './Images/Weather Icons/Day/'
-            : './Images/Weather Icons/Night/'
-        : './Images/Weather Icons/General Weather/';
+  let differenceWeatherIcons = ["01", "02", "03", "09"];
+  let path = differenceWeatherIcons.includes(iconId.substring(0, 2))
+    ? iconId[2] === "d"
+      ? "./Images/Weather Icons/Day/"
+      : "./Images/Weather Icons/Night/"
+    : "./Images/Weather Icons/General Weather/";
 
-    let iconName = GetIconNameFromId(iconId);
+  let iconName = GetIconNameFromId(iconId);
 
-    if (iconName === 'not found') return 'Images/General/weather_icon.png';
+  if (iconName === "not found") return "Images/General/weather_icon.png";
 
-    path += iconName;
+  path += iconName;
 
-    return path;
+  return path;
 }
 
 function GetIconNameFromId(iconId) {
-    iconId = iconId.substring(0, 2);
-    switch (iconId) {
-        case '01':
-            return 'clear_sky.png';
-        case '02':
-            return 'few_clouds.png';
-        case '03':
-            return 'scattered_clouds.png';
-        case '04':
-            return 'broken_clouds.png';
-        case '09':
-            return 'shower_rain.png';
-        case '10':
-            return 'rain.png';
-        case '11':
-            return 'thunderstorm.png';
-        case '13':
-            return 'snow.png';
-        case '50':
-            return 'mist.png';
-        default:
-            return 'not found'
-    }
+  iconId = iconId.substring(0, 2);
+  switch (iconId) {
+    case "01":
+      return "clear_sky.png";
+    case "02":
+      return "few_clouds.png";
+    case "03":
+      return "scattered_clouds.png";
+    case "04":
+      return "broken_clouds.png";
+    case "09":
+      return "shower_rain.png";
+    case "10":
+      return "rain.png";
+    case "11":
+      return "thunderstorm.png";
+    case "13":
+      return "snow.png";
+    case "50":
+      return "mist.png";
+    default:
+      return "not found";
+  }
 }
 
 function FirstStart() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(StartFromUserLocation, GetCoordinatesOfCity('shaki'));
-    } else {
-        GetCoordinatesOfCity('shaki');
-    }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      StartFromUserLocation,
+      GetCoordinatesOfCity("shaki")
+    );
+  } else {
+    GetCoordinatesOfCity("shaki");
+  }
 }
 
 function StartFromUserLocation(position) {
-    GetCurrentWeatherForecast(position.coords.latitude, position.coords.longitude);
-    GetHourlyWeatherForecast(position.coords.latitude, position.coords.longitude);
+  GetCurrentWeatherForecast(
+    position.coords.latitude,
+    position.coords.longitude
+  );
+  GetHourlyWeatherForecast(position.coords.latitude, position.coords.longitude);
 }
