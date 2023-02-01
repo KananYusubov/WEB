@@ -542,7 +542,7 @@ a:hover {
 }
 
 .fromTopToDown {
-    animation: fromTopToDown 2s ease-out infinite;
+    animation: fromTopToDown 3s ease-out infinite;
 }
 
 /*-- See More --*/
