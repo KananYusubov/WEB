@@ -1,156 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap");
     </style>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon" />
     <title>Git Search</title>
-</head>
-<body>
-<nav>
-    <div class="logo"></div>
-    <input id="input-login" placeholder="Search login ..." class="input" name="text" type="text"
-           pattern="[a-zA-Z\d](?:[a-zA-Z\d]|-(?=[a-zA-Z\d])){0,38}">
-    <div class="link-section">
-        <a href="https://github.com/KenanHomework"
-           target="_blank"
-           class="general-btn">My Github</a>
-        <a class="green-btn">
-            <svg fill="#c9d1d9" width="17px" height="17px" viewBox="0 0 24.00 24.00" xmlns="http://www.w3.org/2000/svg"
-                 style="--darkreader-inline-fill: #323638; --darkreader-inline-stroke: #cbc6c0;" stroke="#c9d1d9" data-darkreader-inline-fill=""
-                 data-darkreader-inline-stroke="" stroke-width="0.00024000000000000003">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.528"
-                   style="--darkreader-inline-stroke: #c8c3bc;" data-darkreader-inline-stroke=""></g>
-                <g id="SVGRepo_iconCarrier">
-                    <path d="M1.293,11.293l4-4A1,1,0,1,1,6.707,8.707L3.414,12l3.293,3.293a1,1,0,1,1-1.414,1.414l-4-4A1,1,0,0,1,1.293,11.293Zm17.414-4a1,1,0,1,0-1.414,1.414L20.586,12l-3.293,3.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414ZM13.039,4.726l-4,14a1,1,0,0,0,.686,1.236A1.053,1.053,0,0,0,10,20a1,1,0,0,0,.961-.726l4-14a1,1,0,1,0-1.922-.548Z"></path>
-                </g>
-            </svg>
-            Code
+  </head>
+  <body>
+    <nav>
+      <div class="logo"></div>
+      <input
+        id="input-login"
+        placeholder="Search login ..."
+        class="input"
+        name="text"
+        type="text"
+        pattern="[a-zA-Z\d](?:[a-zA-Z\d]|-(?=[a-zA-Z\d])){0,38}"
+      />
+      <div class="link-section">
+        <a
+          href="https://github.com/KenanHomework"
+          target="_blank"
+          class="general-btn"
+          >My Github</a
+        >
+        <a
+          class="green-btn"
+          href="https://github.com/KenanHomework/WEB/tree/master/Homeworks/JavaScript/GitSearch"
+          target="_blank"
+        >
+          <svg
+            fill="#c9d1d9"
+            width="17px"
+            height="17px"
+            viewBox="0 0 24.00 24.00"
+            xmlns="http://www.w3.org/2000/svg"
+            style="
+              --darkreader-inline-fill: #323638;
+              --darkreader-inline-stroke: #cbc6c0;
+            "
+            stroke="#c9d1d9"
+            data-darkreader-inline-fill=""
+            data-darkreader-inline-stroke=""
+            stroke-width="0.00024000000000000003"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke="#CCCCCC"
+              stroke-width="0.528"
+              style="--darkreader-inline-stroke: #c8c3bc"
+              data-darkreader-inline-stroke=""
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M1.293,11.293l4-4A1,1,0,1,1,6.707,8.707L3.414,12l3.293,3.293a1,1,0,1,1-1.414,1.414l-4-4A1,1,0,0,1,1.293,11.293Zm17.414-4a1,1,0,1,0-1.414,1.414L20.586,12l-3.293,3.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414ZM13.039,4.726l-4,14a1,1,0,0,0,.686,1.236A1.053,1.053,0,0,0,10,20a1,1,0,0,0,.961-.726l4-14a1,1,0,1,0-1.922-.548Z"
+              ></path>
+            </g>
+          </svg>
+          Code
         </a>
-    </div>
-</nav>
-<section id="loader-container">
-    <div id="loader">
+      </div>
+    </nav>
+    <section id="loader-container">
+      <div id="loader">
         <span></span>
-    </div>
-</section>
-<main>
-    <section class="profile-general-info">
+      </div>
+    </section>
+    <main>
+      <section class="profile-general-info">
         <div id="avatar"></div>
         <div class="name-info">
-            <div id="full-name"></div>
-            <div id="login"></div>
+          <div id="full-name"></div>
+          <div id="login"></div>
         </div>
-        <a class="general-btn" href="" target="_blank" id="goto-profile">Go to profile</a>
+        <a class="general-btn" href="" target="_blank" id="goto-profile"
+          >Go to profile</a
+        >
         <div class="popularity-info">
-            <div class="popularity">
-                <div class="followers-icon">
-                    <svg text="muted" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
-                         class="octicon octicon-people" fill="#8b949e">
-                        <path fill-rule="evenodd"
-                              d="M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z"></path>
-                    </svg>
-                </div>
-                <div id="followers" class="popularity-count"></div>
-                <span>followers</span>
+          <div class="popularity">
+            <div class="followers-icon">
+              <svg
+                text="muted"
+                aria-hidden="true"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                data-view-component="true"
+                class="octicon octicon-people"
+                fill="#8b949e"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z"
+                ></path>
+              </svg>
             </div>
-            <span>        · </span>
-            <div class="popularity">
-                <div id="following" class="popularity-count">6</div>
-                <span>following</span>
-            </div>
+            <div id="followers" class="popularity-count"></div>
+            <span>followers</span>
+          </div>
+          <span> · </span>
+          <div class="popularity">
+            <div id="following" class="popularity-count">6</div>
+            <span>following</span>
+          </div>
         </div>
         <div class="detail-container"></div>
-    </section>
-    <section id="additional-info-area" class="profile-additional-info"></section>
-</main>
-<div class="snackbar">
-    <img class="snackbar-icon" src="./Images/clipboard.png"/>
-    <div class="snackbar-text">
+      </section>
+      <section
+        id="additional-info-area"
+        class="profile-additional-info"
+      ></section>
+    </main>
+    <div class="snackbar">
+      <img class="snackbar-icon" src="./Images/clipboard.png" />
+      <div class="snackbar-text">
         <h2 class="snackbar-text-heading">Info Copied to clipboard!</h2>
         <p class="snackbar-text-paragraph">kananysbv@gmail.com</p>
-    </div>
-    <svg
-            class="snackbar-close-btn"
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-    >
-        <circle opacity="0.12" cx="11" cy="11" r="10" fill="#22272F"/>
+      </div>
+      <svg
+        class="snackbar-close-btn"
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle opacity="0.12" cx="11" cy="11" r="10" fill="#22272F" />
         <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1.75 11C1.75 5.89137 5.89137 1.75 11 1.75C16.1086 1.75 20.25 5.89137 20.25 11C20.25 16.1086 16.1086 20.25 11 20.25C5.89137 20.25 1.75 16.1086 1.75 11ZM11 0.25C5.06294 0.25 0.25 5.06294 0.25 11C0.25 16.9371 5.06294 21.75 11 21.75C16.9371 21.75 21.75 16.9371 21.75 11C21.75 5.06294 16.9371 0.25 11 0.25ZM8.53033 7.46967C8.23744 7.17678 7.76256 7.17678 7.46967 7.46967C7.17678 7.76256 7.17678 8.23744 7.46967 8.53033L9.93934 11L7.46967 13.4697C7.17678 13.7626 7.17678 14.2374 7.46967 14.5303C7.76256 14.8232 8.23744 14.8232 8.53033 14.5303L11 12.0607L13.4697 14.5303C13.7626 14.8232 14.2374 14.8232 14.5303 14.5303C14.8232 14.2374 14.8232 13.7626 14.5303 13.4697L12.0607 11L14.5303 8.53033C14.8232 8.23744 14.8232 7.76256 14.5303 7.46967C14.2374 7.17678 13.7626 7.17678 13.4697 7.46967L11 9.93934L8.53033 7.46967Z"
-                fill="#7C828D"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M1.75 11C1.75 5.89137 5.89137 1.75 11 1.75C16.1086 1.75 20.25 5.89137 20.25 11C20.25 16.1086 16.1086 20.25 11 20.25C5.89137 20.25 1.75 16.1086 1.75 11ZM11 0.25C5.06294 0.25 0.25 5.06294 0.25 11C0.25 16.9371 5.06294 21.75 11 21.75C16.9371 21.75 21.75 16.9371 21.75 11C21.75 5.06294 16.9371 0.25 11 0.25ZM8.53033 7.46967C8.23744 7.17678 7.76256 7.17678 7.46967 7.46967C7.17678 7.76256 7.17678 8.23744 7.46967 8.53033L9.93934 11L7.46967 13.4697C7.17678 13.7626 7.17678 14.2374 7.46967 14.5303C7.76256 14.8232 8.23744 14.8232 8.53033 14.5303L11 12.0607L13.4697 14.5303C13.7626 14.8232 14.2374 14.8232 14.5303 14.5303C14.8232 14.2374 14.8232 13.7626 14.5303 13.4697L12.0607 11L14.5303 8.53033C14.8232 8.23744 14.8232 7.76256 14.5303 7.46967C14.2374 7.17678 13.7626 7.17678 13.4697 7.46967L11 9.93934L8.53033 7.46967Z"
+          fill="#7C828D"
         />
-    </svg>
-</div>
+      </svg>
+    </div>
 
-
-<section class='content'>
-    <div class='planet'></div>
-    <div class='astronauta'></div>
-    <div class='text'>
+    <section class="content">
+      <div class="planet"></div>
+      <div class="astronauta"></div>
+      <div class="text">
         <h1>Ooops!</h1>
         <h2>User Not Found !</h2>
-    </div>
-</section>
+      </div>
+    </section>
 
-<footer class="footer">
-
-    <div class="fire">
+    <footer class="footer">
+      <div class="fire">
         <div class="fire-left">
-            <div class="main-fire"></div>
-            <div class="particle-fire"></div>
+          <div class="main-fire"></div>
+          <div class="particle-fire"></div>
         </div>
         <div class="fire-center">
-            <div class="main-fire"></div>
-            <div class="particle-fire"></div>
+          <div class="main-fire"></div>
+          <div class="particle-fire"></div>
         </div>
         <div class="fire-right">
-            <div class="main-fire"></div>
-            <div class="particle-fire"></div>
+          <div class="main-fire"></div>
+          <div class="particle-fire"></div>
         </div>
         <div class="fire-bottom">
-            <div class="main-fire"></div>
+          <div class="main-fire"></div>
         </div>
-    </div>
+      </div>
 
-    Made with
-    <div class="heart-container">
+      Made with
+      <div class="heart-container">
         <div class="container">
-            <div class="heart-wrap">
-                <div class="heart">
-                    <div class="tank"></div>
-                    <svg class="curve" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                        <defs>
-                            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
-                        </defs>
-                        <g>
-                            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(103, 130, 191, 0.5)"/>
-                            <use xlink:href="#gentle-wave" x="48" y="1" fill="rgba(103, 130, 191, 0.3)"/>
-                            <use xlink:href="#gentle-wave" x="48" y="2" fill="rgba(103, 130, 191, 1)"/>
-                        </g>
-                    </svg>
-                </div>
+          <div class="heart-wrap">
+            <div class="heart">
+              <div class="tank"></div>
+              <svg
+                class="curve"
+                viewBox="0 24 150 28"
+                preserveAspectRatio="none"
+                shape-rendering="auto"
+              >
+                <defs>
+                  <path
+                    id="gentle-wave"
+                    d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                  />
+                </defs>
+                <g>
+                  <use
+                    xlink:href="#gentle-wave"
+                    x="48"
+                    y="0"
+                    fill="rgba(103, 130, 191, 0.5)"
+                  />
+                  <use
+                    xlink:href="#gentle-wave"
+                    x="48"
+                    y="1"
+                    fill="rgba(103, 130, 191, 0.3)"
+                  />
+                  <use
+                    xlink:href="#gentle-wave"
+                    x="48"
+                    y="2"
+                    fill="rgba(103, 130, 191, 1)"
+                  />
+                </g>
+              </svg>
             </div>
+          </div>
         </div>
         <svg>
-            <clipPath id="myPath" clipPathUnits="objectBoundingBox">
-                <path d="M0.373,0.967 S0.616,0.866,0.768,0.644 S0.912,0.107,0.739,0 S0.373,0.108,0.373,0.108 S0.166,-0.113,0,-0.002 S-0.159,0.432,-0.021,0.644 S0.373,0.967,0.373,0.967"></path>
-            </clipPath>
+          <clipPath id="myPath" clipPathUnits="objectBoundingBox">
+            <path
+              d="M0.373,0.967 S0.616,0.866,0.768,0.644 S0.912,0.107,0.739,0 S0.373,0.108,0.373,0.108 S0.166,-0.113,0,-0.002 S-0.159,0.432,-0.021,0.644 S0.373,0.967,0.373,0.967"
+            ></path>
+          </clipPath>
         </svg>
-    </div>
-    by Kanan.
-
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-<script src="script.js"></script>
+      </div>
+      by Kanan.
+    </footer>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="script.js"></script>
 </html>
