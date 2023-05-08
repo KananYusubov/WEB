@@ -1,53 +1,48 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./item-add-form.css";
 
 class ItemAddForm extends Component {
-    state = {
-        text: "",
-    };
+  state = {
+    text: "",
+  };
 
-    changeInput = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    };
+  changeInput = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    resetInput = (e) => {
-        this.setState({
-            text: "",
-        });
-    };
+  resetInput = () => {
+    this.setState({
+      text: "",
+    });
+  };
 
-    render() {
-        const {text} = this.state;
-        const {onAdded} = this.props;
+  onSubmit = (i) => {
+    i.preventDefault();
+    if (this.state.text.length <= 0) return;
+    this.props.onAdded(this.state.text);
+    this.resetInput();
+  };
 
-        return (
-            <form
-                className={" form-inline mt-2"}
-                onSubmit={(i) => {
-                    i.preventDefault();
-                    if (text.length <= 0) return;
-                    onAdded(text);
-                    this.resetInput();
-                }}
-            >
-                <input
-                    id={"addInput"}
-                    name={"text"}
-                    className={"form-control w-75"}
-                    placeholder={"Type here..."}
-                    type="text"
-                    value={text}
-                    onChange={this.changeInput}
-                />
+  render() {
+    return (
+      <form className={"d-flex mt-2"} onSubmit={this.onSubmit}>
+        <input
+          name={"text"}
+          className={"form-control "}
+          placeholder={"Type here..."}
+          type="text"
+          value={this.state.text}
+          onChange={this.changeInput}
+        />
 
-                <button className="btn  btn-outline-primary ml-2" type="submit">
-                    Add item
-                </button>
-            </form>
-        );
-    }
+        <button className="btn  btn-outline-primary ml-2" type="submit">
+          Add item
+        </button>
+      </form>
+    );
+  }
 }
 
 export default ItemAddForm;
