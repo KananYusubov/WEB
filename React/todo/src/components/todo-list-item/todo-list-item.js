@@ -1,6 +1,5 @@
 import React from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-
 import "./todo-list-item.css";
 
 const TodoListItem = ({

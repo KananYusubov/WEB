@@ -31,7 +31,6 @@ class App extends Component {
         todoData: newArray,
       };
     });
-    this.calcStat();
   };
 
   createTodoItem(text) {
@@ -51,7 +50,6 @@ class App extends Component {
         todoData: newArray,
       };
     });
-    this.calcStat();
   };
 
   toggleProperty(arr, id, propName) {
@@ -62,13 +60,13 @@ class App extends Component {
   }
 
   calcStat = () => {
-    this.setState(({ todoData }) => {
-      return {
-        todo: todoData.length,
-        done: todoData.filter((todo) => todo.done).length,
-        todoData: todoData,
-      };
-    });
+    const { todoData } = this.state;
+    const done = todoData.filter((todo) => todo.done).length;
+    const todo = todoData.length - done;
+    return {
+      done,
+      todo,
+    };
   };
 
   onToggleImportant = (id) => {
@@ -77,7 +75,6 @@ class App extends Component {
         todoData: this.toggleProperty(todoData, id, "important"),
       };
     });
-    this.calcStat();
   };
 
   onToggleDone = (id) => {
@@ -86,13 +83,14 @@ class App extends Component {
         todoData: this.toggleProperty(todoData, id, "done"),
       };
     });
-    this.calcStat();
   };
 
   render() {
+    const { todo, done } = this.calcStat();
+
     return (
       <div className="todo-app">
-        <AppHeader todo={this.state.todo} done={this.state.done} />
+        <AppHeader todo={todo} done={done} />
         <div className="top-panel d-flex">
           <AppSearchPanel />
           <ItemStatusFilter />
