@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { nanoid } from "nanoid";
 import TodoList from "../todo-list/todo-list";
 import AppHeader from "../app-header/app-header";
 import AppSearchPanel from "../search-panel/search-panel";
@@ -7,9 +8,9 @@ import ItemAddForm from "../item-add-form";
 import "./app.css";
 
 class App extends Component {
-  idSeed = 0;
-
   state = {
+    todo: 3,
+    done: 0,
     todoData: [
       this.createTodoItem("Wake up"),
       this.createTodoItem("Have breakfast"),
@@ -30,6 +31,7 @@ class App extends Component {
         todoData: newArray,
       };
     });
+    this.calcStat();
   };
 
   createTodoItem(text) {
@@ -37,13 +39,9 @@ class App extends Component {
       text,
       important: false,
       done: false,
-      id: ++this.idSeed,
+      id: nanoid(),
     };
   }
-
-  // findIndex(id){
-  //
-  // }
 
   addItem = (text) => {
     this.setState(({ todoData }) => {
@@ -53,6 +51,7 @@ class App extends Component {
         todoData: newArray,
       };
     });
+    this.calcStat();
   };
 
   toggleProperty(arr, id, propName) {
@@ -62,12 +61,23 @@ class App extends Component {
     return [...arr.slice(0, targetId), newItem, ...arr.slice(targetId + 1)];
   }
 
+  calcStat = () => {
+    this.setState(({ todoData }) => {
+      return {
+        todo: todoData.length,
+        done: todoData.filter((todo) => todo.done).length,
+        todoData: todoData,
+      };
+    });
+  };
+
   onToggleImportant = (id) => {
     this.setState(({ todoData }) => {
       return {
         todoData: this.toggleProperty(todoData, id, "important"),
       };
     });
+    this.calcStat();
   };
 
   onToggleDone = (id) => {
@@ -76,12 +86,13 @@ class App extends Component {
         todoData: this.toggleProperty(todoData, id, "done"),
       };
     });
+    this.calcStat();
   };
 
   render() {
     return (
       <div className="todo-app">
-        <AppHeader todo={1} done={2} />
+        <AppHeader todo={this.state.todo} done={this.state.done} />
         <div className="top-panel d-flex">
           <AppSearchPanel />
           <ItemStatusFilter />

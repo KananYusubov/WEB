@@ -1,14 +1,18 @@
 import React from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+
 import "./todo-list-item.css";
 
-const TodoListItem = (
+const TodoListItem = ({
   text,
   onDeleted,
   onToggleImportant,
   onToggleDone,
   done,
-  important
-) => {
+  important,
+}) => {
+  const [animationParent] = useAutoAnimate();
+
   let classNames = "todo-list-item";
   let btnClassNames = "btn btn-outline-success btn-sm float-right";
 
@@ -22,7 +26,7 @@ const TodoListItem = (
   }
 
   return (
-    <span className={classNames}>
+    <span className={classNames} ref={animationParent}>
       <span className="todo-list-item-label " onClick={onToggleDone}>
         {text}
       </span>
@@ -36,7 +40,7 @@ const TodoListItem = (
       </button>
 
       <button
-        className={"btn btn-outline-danger btn-sm float-right"}
+        className={"btn btn-outline-danger  btn-sm  float-right"}
         onClick={onDeleted}
         type={"button"}
       >
