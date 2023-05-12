@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import Users from "./users";
 import { UserProvider } from "./context";
+import Other from "./Other";
 
 function App(props) {
   const [users, setUsers] = useState();
   return (
-    <UserProvider>
-      {/*<SomeComponent />*/}
-      <Users />
-    </UserProvider>
+    <div>
+      <UserProvider>
+        {/*<SomeComponent />*/}
+        {/*<Users />*/}
+        <Other />
+      </UserProvider>
+    </div>
   );
 }
 
