@@ -7,19 +7,20 @@ import PersonDetails from "../person-details";
 import "./app.css";
 
 const App = () => {
-    return (
-            <div className="container">
-                <Header />
-                <RandomPlanet />
-                <div className="row mb2">
-                    <div className="col-md-6">
-                        <ItemList />
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails />
-                    </div>
-                </div>
-            </div>
-    );
-}
+  console.log("running app");
+  return (
+    <div className="container">
+      <Header />
+      <RandomPlanet />
+      <div className="row mb2">
+        <div className="col-md-6">
+          <ItemList />
+        </div>
+        <div className="col-md-6">
+          <PersonDetails />
+        </div>
+      </div>
+    </div>
+  );
+};
 export default App;
